@@ -37,3 +37,22 @@ Docker Image ek **blueprint** hota hai jo **containers** banane ke liye use hota
 #### **6) Docker version and commands ?**
 ✔ **docker** -v ->verson .
 ✔ **docker** ->all command of docker .
+
+### DOCKER COMMANDS :-
+docker pull IMAGE_NAME
+docker images
+docker run IMAGE_NAME
+docker run -it IMAGE_NAME
+docker stop CONT_NAME or CONT_ID
+docker start CONT_NAME or CONT_ID
+
+ex: hello_world
+REPOSITORY                 TAG       IMAGE ID       CREATED         SIZE
+hello-world                latest    74cc54e27dc4   6 weeks ago     10.1kB
+docker/welcome-to-docker   latest    c1f619b6477e   16 months ago   18.6MB
+
+-> TAG means, versions
+->image se hum container build kar sakte h.
+->docker run hello-world ->isse container section me ek container banega and container ka ek random name hota h and unique ID and uss image ka naam jis image se wo container build hua h .
+
+
