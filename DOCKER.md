@@ -35,5 +35,5 @@ Docker Image ek **blueprint** hota hai jo **containers** banane ke liye use hota
 
 
 #### **6) Docker version and commands ?**
-docker -v ->verson
-docker ->all command of docker
+✔ **docker** -v ->verson
+✔ **docker** ->all command of docker
