@@ -33,4 +33,7 @@ Docker Image ek **blueprint** hota hai jo **containers** banane ke liye use hota
 ✔ **Fast & Lightweight** → VM se zyada efficient hai.  
 ✔ **Scalability** → Multiple containers ek saath manage kar sakte hain.  
 
-Ye **basic theoretical knowledge** hai jo ek beginner ko Docker ke liye samajhna chahiye! 🚀
+
+#### **6) Docker version and commands ?**
+docker -v ->verson
+docker ->all command of docker
