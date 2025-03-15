@@ -44,7 +44,9 @@ Docker Image ek **blueprint** hota hai jo **containers** banane ke liye use hota
 ```bash
 docker pull IMAGE_NAME             # Download an image from Docker Hub  
 docker images                      # List all downloaded images  
-docker run IMAGE_NAME              # Run a container from an image  
+docker run IMAGE_NAME              # Ek naya container create karega aur run karega
+docker ps -a                       # Sab containers list karne ke liye  
+docker start CONTAINER_ID          # Pehle se existing container ko start karne ke liye   
 docker run -it IMAGE_NAME          # Run a container in interactive mode  
 docker stop CONT_NAME or CONT_ID   # Stop a running container  
 docker start CONT_NAME or CONT_ID  # Start a stopped container  
