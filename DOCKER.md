@@ -68,7 +68,7 @@ CONTAINER ID   IMAGE        COMMAND       NAMES
 ->docker daemon pull karta h hello-world image from docker hub.
 -> docker daemon ek new container create krta h uss image se.
 
-## Normal docker run IMAGE_NAME :-  Ek naya container create hoga aur turant exit ho jayega.
+## ** Normal docker run IMAGE_NAME ** :-  Ek naya container create hoga aur turant exit ho jayega.
 Interactive Mode (docker run -it IMAGE_NAME) :- Ek naya container create hoga aur start hoga.
 Tum container ke andar enter karoge aur tmhe ek terminal bhi milega jispe tm command run kar sakte ho.
 
