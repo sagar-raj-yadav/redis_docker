@@ -76,7 +76,32 @@ CONTAINER ID   IMAGE        COMMAND       NAMES
 Interactive Mode (docker run -it IMAGE_NAME) :- Ek naya container create hoga aur start hoga.
 Tum container ke andar enter karoge aur tmhe ek terminal bhi milega jispe tm command run kar sakte ho.
 
+
+## Versions
+i. docker pull IMAGE_NAME:version
+ii. docker run -d IMAGE_NAME   { -d means , detach(kisi bhi container ko background ke andar run 
+                                kar sakte h,normally container "-a" attach mode me run hota h) }
+iii. docker run --name YAHA_TUM_CONTAINER_KA_NAAM_LIKH_SAKTE_HO -d IMAGE_NAME
+
+
+-> docker pull mysql :- agar hum koi specific version mention nhi karte to bydefault latest version pull ho jayega.
+->suppose we want to pull version 8.2 then, docker pull mysql:8.2
+->hum mysql ka latest version and mysql ka 8.0 version dono ko ek sath docker me pull kar sakte h.
+
+
 ## Note:-
  C:\Users\sagar>docker run -it ubuntu bash ->isko run krne ke baad , terminal pe ye show hoga root@b1e8b8bab62b:/#  ->it means hum ubuntu contianer ke andar jaa chuke hai.
 
 ## Note:-  green circle button means wo container running state me h.
+
+example to create docker container:-
+i)
+C:\Users\sagar>docker run -d -e MYSQL_ROOT_PASSWORD=sagarraj  mysql
+1e6eae5f1fc1b39ea667471589064b685c2b01341e990de37470642645a58e42
+ii)
+C:\Users\sagar> docker run -d  -e MYSQL_ROOT_PASSWORD=sagar8 --name my_sql_older  mysql:8.0
+9aefd3dc1f48ba4093689143693b605f6e2077c24963ccfc7dd15f48fe3eeae0
+
+## DOCKER IMAGES LAYERS
+->any docker image is made up of different layers. (container->layer 2->layer 1->base layer)
+
