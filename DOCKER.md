@@ -72,6 +72,6 @@ CONTAINER ID   IMAGE        COMMAND       NAMES
 Interactive Mode (docker run -it IMAGE_NAME) :- Ek naya container create hoga aur start hoga.
 Tum container ke andar enter karoge aur tmhe ek terminal bhi milega jispe tm command run kar sakte ho.
 
-## Note:-
+## **Note**:-
  C:\Users\sagar>docker run -it ubuntu bash ->isko run krne ke baad , terminal pe ye show hoga root@b1e8b8bab62b:/#  ->it means hum ubuntu contianer ke andar jaa chuke hai.
 
