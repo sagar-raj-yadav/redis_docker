@@ -58,7 +58,6 @@ docker/welcome-to-docker   latest    c1f619b6477e   16 months ago   18.6MB
 Note: TAG -> version of Image
 
 ## create container
-```bash
 CONTAINER ID   IMAGE        COMMAND       NAMES
 5d8a0f7c2a12   hello-world   "bash"       zen_blackwell
 ->docker container ko random name de deta h. 
