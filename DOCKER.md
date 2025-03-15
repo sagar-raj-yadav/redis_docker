@@ -47,8 +47,12 @@ docker run IMAGE_NAME              # Ek naya container create karega aur run kar
 docker ps -a                       # Sab containers list karne ke liye  
 docker start CONTAINER_ID          # Pehle se existing container ko start karne ke liye   
 docker run -it IMAGE_NAME          # Run a container in interactive mode  
-docker stop CONT_NAME or CONT_ID   # Stop a running container  
-docker start CONT_NAME or CONT_ID  # Start a stopped container  
+docker stop CONTAINER_NAME or CONTAINER_ID   # Stop a running container  
+docker start CONTAINER_NAME or CONTAINER_ID  # Start a stopped container  
+docker rmi IMAGE_ID                 # delete image
+docker rm CONTAINER_ID              # delete container
+
+Note: root@b1e8b8bab62b:/# ->supose ye container ke andar chale gye aur yaha se bahar nikalna h then  root@b1e8b8bab62b:/# exit  .
 
 REPOSITORY                 TAG       IMAGE ID       CREATED         SIZE  
 hello-world                latest    74cc54e27dc4   6 weeks ago     10.1kB  
@@ -72,6 +76,7 @@ CONTAINER ID   IMAGE        COMMAND       NAMES
 Interactive Mode (docker run -it IMAGE_NAME) :- Ek naya container create hoga aur start hoga.
 Tum container ke andar enter karoge aur tmhe ek terminal bhi milega jispe tm command run kar sakte ho.
 
-## *Note*:-
+## Note:-
  C:\Users\sagar>docker run -it ubuntu bash ->isko run krne ke baad , terminal pe ye show hoga root@b1e8b8bab62b:/#  ->it means hum ubuntu contianer ke andar jaa chuke hai.
 
+## Note:-  green circle button means wo container running state me h.
