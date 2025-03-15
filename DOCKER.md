@@ -40,7 +40,7 @@ Docker Image ek **blueprint** hota hai jo **containers** banane ke liye use hota
 
 # Docker Commands  
 
-## ** Basic Commands   **
+## **Basic Commands**
 docker pull IMAGE_NAME             # Download an image from Docker Hub  
 docker images                      # List all downloaded images  
 docker run IMAGE_NAME              # Ek naya container create karega aur run karega
@@ -58,17 +58,17 @@ Note: TAG -> version of Image
 
 
 
-## ** create container **
+## **create container**
 CONTAINER ID   IMAGE        COMMAND       NAMES
 5d8a0f7c2a12   hello-world   "bash"       zen_blackwell
 ->docker container ko random name de deta h. 
 
-## ** steps to create docker container **
+## **steps to create docker container**
 ->docker client contact karta h docker daemon ko.
 ->docker daemon pull karta h hello-world image from docker hub.
 -> docker daemon ek new container create krta h uss image se.
 
-## ** Normal docker run IMAGE_NAME ** :-  Ek naya container create hoga aur turant exit ho jayega.
+## **Normal docker run IMAGE_NAME** :-  Ek naya container create hoga aur turant exit ho jayega.
 Interactive Mode (docker run -it IMAGE_NAME) :- Ek naya container create hoga aur start hoga.
 Tum container ke andar enter karoge aur tmhe ek terminal bhi milega jispe tm command run kar sakte ho.
 
