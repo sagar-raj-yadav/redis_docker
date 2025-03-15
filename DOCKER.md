@@ -56,3 +56,22 @@ hello-world                latest    74cc54e27dc4   6 weeks ago     10.1kB
 docker/welcome-to-docker   latest    c1f619b6477e   16 months ago   18.6MB  
 
 Note: TAG -> version of Image
+
+## create container
+```bash
+CONTAINER ID   IMAGE        COMMAND       NAMES
+5d8a0f7c2a12   hello-world   "bash"       zen_blackwell
+->docker container ko random name de deta h. 
+
+## steps to create docker container
+->docker client contact karta h docker daemon ko.
+->docker daemon pull karta h hello-world image from docker hub.
+-> docker daemon ek new container create krta h uss image se.
+
+## Normal docker run IMAGE_NAME :-  Ek naya container create hoga aur turant exit ho jayega.
+Interactive Mode (docker run -it IMAGE_NAME) :- Ek naya container create hoga aur start hoga.
+Tum container ke andar enter karoge aur tmhe ek terminal bhi milega jispe tm command run kar sakte ho.
+
+## Note:-
+ C:\Users\sagar>docker run -it ubuntu bash ->isko run krne ke baad , terminal pe ye show hoga root@b1e8b8bab62b:/#  ->it means hum ubuntu contianer ke andar jaa chuke hai.
+
