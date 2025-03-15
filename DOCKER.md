@@ -56,6 +56,8 @@ hello-world                latest    74cc54e27dc4   6 weeks ago     10.1kB
 docker/welcome-to-docker   latest    c1f619b6477e   16 months ago   18.6MB  
 
 Note: TAG -> version of Image
+bash```
+
 
 ## create container
 CONTAINER ID   IMAGE        COMMAND       NAMES
