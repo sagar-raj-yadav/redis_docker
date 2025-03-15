@@ -38,8 +38,11 @@ Docker Image ek **blueprint** hota hai jo **containers** banane ke liye use hota
 ✔ **docker** -v ->verson .
 ✔ **docker** ->all command of docker .
 
-# Docker Commands   
-docker pull IMAGE_NAME             # make an image
+# Docker Commands  
+
+## Basic Commands  
+```bash
+docker pull IMAGE_NAME             # Download an image from Docker Hub  
 docker images                      # List all downloaded images  
 docker run IMAGE_NAME              # Run a container from an image  
 docker run -it IMAGE_NAME          # Run a container in interactive mode  
