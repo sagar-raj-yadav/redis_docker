@@ -154,9 +154,8 @@ Ek Example
 🚗 VM = Alag-alag cars jo apna pura engine (OS) lekar chal rahi hain.
 🚌 Docker = Ek hi bus (OS) jisme alag-alag passengers (applications) hain.
 
-
-# Docker linux ke liye bana hai ,to windows/max pe docker kaise run hota h?
-docker  linux ka virtual environment create krta h.Yeh lightweight VM hota hai jo background mein chalu rehta hai.
-windows pe DOCKER DESKTOP ke help se docker run hota h.
-Agar Windows hai toh WSL2 (Windows Subsystem for Linux) ka use hota hai.
-
+# Docker Linux ke liye bana hai, to Windows/Mac pe Docker kaise run hota hai?
+- Docker Linux ka virtual environment create karta hai.
+- Yeh ek lightweight VM hota hai jo background mein chalu rehta hai.
+- Windows pe Docker **Docker Desktop** ki madad se run hota hai.
+- Agar Windows hai toh **WSL2 (Windows Subsystem for Linux)** ka use hota hai.
