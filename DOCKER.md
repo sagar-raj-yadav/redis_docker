@@ -94,7 +94,7 @@ iii. docker run --name YAHA_TUM_CONTAINER_KA_NAAM_LIKH_SAKTE_HO -d IMAGE_NAME
 
 ## Note:-  green circle button means wo container running state me h.
 
-example to create docker container:-
+# example to create docker container:-
 i)
 C:\Users\sagar>docker run -d -e MYSQL_ROOT_PASSWORD=sagarraj  mysql
 1e6eae5f1fc1b39ea667471589064b685c2b01341e990de37470642645a58e42
@@ -103,5 +103,24 @@ C:\Users\sagar> docker run -d  -e MYSQL_ROOT_PASSWORD=sagar8 --name my_sql_older
 9aefd3dc1f48ba4093689143693b605f6e2077c24963ccfc7dd15f48fe3eeae0
 
 ## DOCKER IMAGES LAYERS
-->any docker image is made up of different layers. (container->layer 2->layer 1->base layer)
+->any docker image is made up of different layers.
+{ container (top layer) ->layer 2->layer 1->base layer (last layer) }
+->sirf container layer ko change kar skate h ,iske alawa koi bhi layer me change nhi kar sakte 
+ (i.e, baki sari layer read only layer hota h) .
+->conatiner layer ko change kar sakte h ,jisse dusra new container build kar sakte h.
+->suppose agar same image do different version me install karte h to dono images me kuch layer same hota h (pull krte time jo layer same hai usme "Already exists" likha hua aayega ).
+
+
+## PORT BINDING
+haar container ka apna ek different port hota h.
+machine ka port alag and container ka port alag hota h.
+machine port ->8081,5000
+container port-> 3306/tcp
+
+But,hum container ke port ko machine ke port se bind kar sakte h.
+
+suppose agar koi request machine pe port 8080 pe aa rha h ,hum cahte h ki wo request container ke 3306 port pe chala jaye,then we use  " docker run -p8080:3306 IMAGE_NAME " ->this mapping is called port binding.
+
+
+
 
