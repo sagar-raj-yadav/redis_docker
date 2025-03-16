@@ -160,4 +160,10 @@ Ek Example
 - Windows pe Docker **Docker Desktop** ki madad se run hota hai.
 - Agar Windows hai toh **WSL2 (Windows Subsystem for Linux)** ka use hota hai.
 
+## DOCKER NETWORK
+agar hume 2 container ko apas me interact karwana hai to hume docker network ka use karna padega.
+-docker network ls                    # list of all docker networks
+-docker network create NETWORK_NAME
+
+50:00 apna college
 
