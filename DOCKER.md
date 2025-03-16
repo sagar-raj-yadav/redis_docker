@@ -121,6 +121,13 @@ But,hum container ke port ko machine ke port se bind kar sakte h.
 
 suppose agar koi request machine pe port 8080 pe aa rha h ,hum cahte h ki wo request container ke 3306 port pe chala jaye,then we use  " docker run -p8080:3306 IMAGE_NAME " ->this mapping is called port binding.
 
+Note:agar machine 8080 port ek conatiner ka port 3306 se bind ho gya ,to same 8080 port dudre container se bind nhi ho sakta.
+
+
+## TROUBLESHOOT COMMANDS  ->errors ko resolve karne ke liye
+docker logs CONTAINER_ID
+docker exec -it CONTAINER_ID/bin/bash
+docker exec -it CONTAINER_ID/bin/sh
 
 
 
