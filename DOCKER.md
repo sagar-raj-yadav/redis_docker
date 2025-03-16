@@ -22,7 +22,7 @@ Container ek **isolated unit** hai jo application aur uski **dependencies** ko e
 | **OS Dependency** | No (Runs on Host OS) | Yes (Each VM has its own OS) |  
 
 #### **5) What is a Docker Image?**  
-Docker Image ek **blueprint** hota hai jo **containers** banane ke liye use hota hai.  
+Docker Image **containers** banane ke liye use hota hai.  
 ✔ **Reusable:** Ek baar image bana lo, multiple containers create kar sakte ho.  
 ✔ **Portable:** Kisi bhi system me transfer aur run kar sakte ho.  
 
