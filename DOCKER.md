@@ -159,3 +159,5 @@ Ek Example
 - Yeh ek lightweight VM hota hai jo background mein chalu rehta hai.
 - Windows pe Docker **Docker Desktop** ki madad se run hota hai.
 - Agar Windows hai toh **WSL2 (Windows Subsystem for Linux)** ka use hota hai.
+
+
