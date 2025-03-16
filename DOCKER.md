@@ -130,4 +130,33 @@ docker exec -it CONTAINER_ID/bin/bash
 docker exec -it CONTAINER_ID/bin/sh
 
 
+## DOCKER VS VIRTUAL MACHINE
+
+virtual machine->  
+application layer
+    |
+    OS 
+    |
+    Hardware
+docker virtual machine ka hi OS use karta h.
+
+# Virtual Machine 
+->Har VM apna alag OS use karta hai.
+->Heavy hota hai kyunki har VM ka apna alag OS hota hai.
+Startup slow hota hai kyunki pura OS boot hota hai.
+
+# Docker 
+->Docker host(machine) OS ka hi use karta hai, alag OS load nahi karta.
+->Sirf application aur uski dependencies ko isolate karta hai.
+->Lightweight hota hai, kyunki har container ek full OS nahi chalata.
+->Jaldi start hota hai, kyunki OS boot nahi karna padta.
+Ek Example
+🚗 VM = Alag-alag cars jo apna pura engine (OS) lekar chal rahi hain.
+🚌 Docker = Ek hi bus (OS) jisme alag-alag passengers (applications) hain.
+
+
+# Docker linux ke liye bana hai ,to windows/max pe docker kaise run hota h?
+docker  linux ka virtual environment create krta h.Yeh lightweight VM hota hai jo background mein chalu rehta hai.
+windows pe DOCKER DESKTOP ke help se docker run hota h.
+Agar Windows hai toh WSL2 (Windows Subsystem for Linux) ka use hota hai.
 
