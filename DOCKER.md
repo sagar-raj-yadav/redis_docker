@@ -146,7 +146,7 @@ docker virtual machine ka hi OS use karta h.
 Startup slow hota hai kyunki pura OS boot hota hai.
 
 # Docker 
-->Docker host(machine) OS ka hi use karta hai, alag OS load nahi karta.
+*->Docker host(machine) OS ka hi use karta hai, alag OS load nahi karta*.
 ->Sirf application aur uski dependencies ko isolate karta hai.
 ->Lightweight hota hai, kyunki har container ek full OS nahi chalata.
 ->Jaldi start hota hai, kyunki OS boot nahi karna padta.
