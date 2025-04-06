@@ -79,8 +79,9 @@ Tum container ke andar enter karoge aur tmhe ek terminal bhi milega jispe tm com
 
 ## Versions
 i. docker pull IMAGE_NAME:version
-ii. docker run -d IMAGE_NAME   { -d means , detach(kisi bhi container ko background ke andar run 
-                                kar sakte h,normally container "-a" attach mode me run hota h) }
+ii. docker run -d IMAGE_NAME   { -d means , detach(koi container ko background me run karna ,Tumhara terminal free rahega)
+normally container "-a" attach mode me run hota h) }
+(-a => container foreground me run hota aur tum terminal pe logs dekhte rehte. ) 
 iii. docker run --name YAHA_TUM_CONTAINER_KA_NAAM_LIKH_SAKTE_HO -d IMAGE_NAME
 
 
@@ -162,8 +163,64 @@ Ek Example
 
 ## DOCKER NETWORK
 agar hume 2 container ko apas me interact karwana hai to hume docker network ka use karna padega.
--docker network ls                    # list of all docker networks
+
+# list of all docker networks
+-docker network ls              
+
+# create new network
 -docker network create NETWORK_NAME
 
-50:00 apna college
+
+
+# pull and run mongo and mongo-express container
+-e -> environment variable
+root_username-> admin and  root_password-> querty
+
+=>mongo :- Ye actual database server hota hai.
+=>command to run mongo in terminal:-
+docker run -d 
+-p 27017:27017
+--name mongo 
+--network mongo-network 
+-e MONGO_INITDB_ROOT_USERNAME=admin 
+-e MONGO_INITDB_ROOT_PASSWORD=querty 
+mongo
+
+
+
+=>mongo-express :- Ye GUI (Graphical Interface) hota hai, jo tumhare MongoDB ke upar run karta hai.Tum MongoDB ko web browser se easily dekh sakte ho, usme data insert/update/delete kar sakte ho.mongo-express MongoDB se connect karta hai using same username, password, host, port.
+
+=>run mongo-express:-
+docker run -d 
+  -p 8081:8081 
+  --name mongo-express 
+  --network mongo-network 
+  -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin 
+  -e ME_CONFIG_MONGODB_ADMINPASSWORD=querty 
+  -e ME_CONFIG_MONGODB_SERVER=mongo 
+  -e ME_CONFIG_MONGODB_URL="mongodb://admin:querty@mongo:27017"
+  mongo-express
+
+
+note:- "mongodb://username:password@container_name:port_jisme_mongo_contaienr_run_kar_rha"
+
+# how to run GUI of mongo Db
+go to browser->http://localhost:8081 -> enter username:admin and password:pass
+
+# how my project connect with mongo database of docker?
+myproject -server.js
+docker contains 2 thing -> mongo and mongo-express
+humare project se koi bhi interaction directly mongo database se hoga and hum unn saare changes ko mongo-express GUI me dekh sakte h(because mongo and mongo-express are in same network)
+
+# Docker compose
+.yame-> yet another markup language
+
+
+
+
+
+
+
+
+
 
