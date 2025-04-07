@@ -19,16 +19,19 @@ function App() {
 
   const responses = {
     fact: [
-      "Honey never spoils. Archaeologists found pots of honey in ancient tombs still preserved!",
-      "Bananas are berries, but strawberries are not.",
+      "India has the world's highest cricket ground in Chail, Himachal Pradesh.",
+      "The Kumbh Mela in India is visible from space due to the massive gathering of people.",
+      "India is the only country with a national calendar alongside the Gregorian calendar.",
     ],
     advice: [
-      "Don't compare your journey to anyone else's. Your path is unique.",
-      "Take breaks often. Your brain needs time to refresh!",
+      "Stay curious—India’s history shows how innovation thrives in openness.",
+      "Take pride in your roots; cultural identity is a source of strength.",
+      "Balance tradition and modern thinking—just like India does every day.",
     ],
     quote: [
-      "“The best way to get started is to quit talking and begin doing.” – Walt Disney",
-      "“In the middle of every difficulty lies opportunity.” – Albert Einstein",
+      "“Live as if you were to die tomorrow. Learn as if you were to live forever.” – Mahatma Gandhi",
+      "“The future depends on what you do today.” – Mahatma Gandhi",
+      "“A nation's culture resides in the hearts and in the soul of its people.” – Mahatma Gandhi",
     ],
   };
 
