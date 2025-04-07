@@ -1,0 +1,469 @@
+import { useState } from "react";
+
+function App() {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const [model, setModel] = useState("Luminous");
+  const [showQuestionBlock, setShowQuestionBlock] = useState(true);
+  const [isFirstMessage, setIsFirstMessage] = useState(true);
+
+  const [openConfiguration, setOpenConfiguration] = useState(false);
+  const [enableWebSearch, setEnableWebSearch] = useState(false);
+  const [enableMemoryRetention, setEnableMemoryRetention] = useState(false);
+
+  const options = [
+    { label: "Tell me a fact", value: "fact" },
+    { label: "Give me advice", value: "advice" },
+    { label: "Share a quote", value: "quote" },
+  ];
+
+  const responses = {
+    fact: [
+      "Honey never spoils. Archaeologists found pots of honey in ancient tombs still preserved!",
+      "Bananas are berries, but strawberries are not.",
+    ],
+    advice: [
+      "Don't compare your journey to anyone else's. Your path is unique.",
+      "Take breaks often. Your brain needs time to refresh!",
+    ],
+    quote: [
+      "“The best way to get started is to quit talking and begin doing.” – Walt Disney",
+      "“In the middle of every difficulty lies opportunity.” – Albert Einstein",
+    ],
+  };
+
+  const sendAutoMessage = (type) => {
+    setShowQuestionBlock(false);
+    setIsFirstMessage(false);
+
+    const userMessage = {
+      id: Date.now(),
+      content: `${options.find((o) => o.value === type)?.label}`,
+      role: "user",
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+
+    setTimeout(() => {
+      const botResponse = {
+        id: Date.now() + 1,
+        content:
+          responses[type][Math.floor(Math.random() * responses[type].length)],
+        role: "assistant",
+      };
+
+      setMessages((prev) => [...prev, botResponse]);
+
+      setTimeout(() => {
+        setShowQuestionBlock(true);
+      }, 1000);
+    }, 1000);
+  };
+
+  const handleNewChat = () => {
+    setMessages([]);
+    setShowQuestionBlock(true);
+    setIsFirstMessage(true);
+  };
+
+  const handleSend = () => {
+    if (!input.trim()) return;
+
+    const userMessage = {
+      id: Date.now(),
+      content: input.trim(),
+      role: "user",
+    };
+    setMessages((prev) => [...prev, userMessage]);
+    setInput("");
+  };
+
+  const [creativity, setCreativity] = useState(0.3);
+  const [maxTokens, setMaxTokens] = useState(1024);
+
+  return (
+    <div style={styles.container}>
+      <div style={styles.sidebar}>
+        <h2 style={styles.sidebarTitle}>Basic AI Chat</h2>
+        <button onClick={handleNewChat} style={styles.newChatButton}>
+          New Conversation
+        </button>
+
+        <div style={styles.settings}>
+          <h4>Settings</h4>
+          <button
+            onClick={() => setOpenConfiguration(!openConfiguration)}
+            style={styles.configButton}
+          >
+            <span style={styles.buttonContent}>
+              <span
+                style={{ color: "white", fontWeight: "bold", fontSize: 16 }}
+              >
+                ⚙️ Configuration
+              </span>
+              <span>{openConfiguration ? "◀️" : "▶️"}</span>
+            </span>
+          </button>
+
+          {openConfiguration && (
+            <div style={styles.configPanel}>
+              <div style={{ marginBottom: "16px" }}>
+                <p style={{ color: "orange" }}>🎨 Creativity: {creativity}</p>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value={creativity}
+                  onChange={(e) => setCreativity(parseFloat(e.target.value))}
+                  style={{
+                    width: "100%",
+                    accentColor: "orange",
+                    background: "brown",
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: "16px" }}>
+                <p style={{ color: "orange" }}>📦 Max Tokens: {maxTokens}</p>
+                <input
+                  type="range"
+                  min="1000"
+                  max="40000"
+                  step="100"
+                  value={maxTokens}
+                  onChange={(e) => setMaxTokens(parseInt(e.target.value))}
+                  style={{
+                    width: "100%",
+                    accentColor: "orange",
+                    background: "brown",
+                  }}
+                />
+              </div>
+
+              <div style={styles.configItem}>
+                <label>Web Search</label>
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={enableWebSearch}
+                    onChange={() => setEnableWebSearch(!enableWebSearch)}
+                  />
+                  <span className="slider round"></span>
+                </label>
+              </div>
+
+              <div style={styles.configItem}>
+                <label>Memory Retention</label>
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={enableMemoryRetention}
+                    onChange={() =>
+                      setEnableMemoryRetention(!enableMemoryRetention)
+                    }
+                  />
+                  <span className="slider round"></span>
+                </label>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div style={{ marginTop: "20px" }}>
+          <p style={{ color: "grey", fontWeight: "bold" }}>
+            Conversation History
+          </p>
+          <p style={{ fontSize: "14px", marginLeft: "10px" }}>
+            Previous Conversation 1
+          </p>
+          <p style={{ fontSize: "14px", marginLeft: "10px" }}>
+            Previous Conversation 2
+          </p>
+          <p style={{ fontSize: "14px", marginLeft: "10px" }}>
+            Previous Conversation 3
+          </p>
+        </div>
+      </div>
+
+      <div style={styles.chatContainer}>
+        <div style={styles.chatHeader}>
+          <span style={styles.modelText}>Model: {model}</span>
+        </div>
+
+        <div style={styles.chatBody}>
+          {messages.map((message) => (
+            <div
+              key={message.id}
+              style={{
+                ...styles.message,
+                ...(message.role === "user"
+                  ? styles.userMessage
+                  : styles.botMessage),
+              }}
+            >
+              <p>{message.content}</p>
+              <div style={styles.timestamp}>
+                {new Date().toLocaleTimeString()}
+              </div>
+            </div>
+          ))}
+
+          {showQuestionBlock && (
+            <div style={styles.questionBlock}>
+              <div style={styles.questionCard}>
+                <p style={styles.questionText}>
+                  {isFirstMessage
+                    ? "Hello! I'm here to help. What would you like to know about?"
+                    : "Please select one of the options..."}
+                </p>
+
+                {options.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => sendAutoMessage(option.value)}
+                    style={styles.optionButton}
+                  >
+                    <span>{option.label}</span>
+                    <span style={{ color: "#fbbf24", marginLeft: "10px" }}>
+                      {">"}
+                    </span>
+                  </button>
+                ))}
+
+                <div style={styles.cardTime}>
+                  <div style={styles.bulletDot} />
+                  <span>
+                    {new Date().toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div style={styles.chatFooter}>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            placeholder="Type a message..."
+            style={styles.input}
+          />
+          <button onClick={handleSend} style={styles.sendButton}>
+            Send
+          </button>
+        </div>
+      </div>
+
+      <style>{`
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 40px;
+          height: 22px;
+        }
+        .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background-color: #ccc;
+          transition: .4s;
+          border-radius: 34px;
+        }
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 16px;
+          width: 16px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+        }
+        input:checked + .slider {
+          background-color: #fbbf24;
+        }
+        input:checked + .slider:before {
+          transform: translateX(18px);
+        }
+      `}</style>
+    </div>
+  );
+}
+
+const styles = {
+  container: {
+    display: "flex",
+    height: "100vh",
+    width: "100vw",
+    fontFamily: "sans-serif",
+  },
+  sidebar: {
+    width: "280px",
+    backgroundColor: "#1f2937",
+    color: "white",
+    padding: "16px",
+  },
+  sidebarTitle: {
+    marginBottom: "20px",
+  },
+  newChatButton: {
+    width: "100%",
+    padding: "10px",
+    backgroundColor: "orange",
+    color: "black",
+    fontWeight: "bold",
+    borderRadius: "5px",
+    cursor: "pointer",
+    border: "none",
+  },
+  settings: {
+    marginTop: "20px",
+  },
+  configButton: {
+    backgroundColor: "#374151",
+    color: "#fbbf24",
+    padding: "8px",
+    borderRadius: "6px",
+    border: "none",
+    marginTop: "10px",
+    cursor: "pointer",
+    width: "90%",
+  },
+  buttonContent: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+  },
+  configPanel: {
+    backgroundColor: "rgba(181, 101, 29,0.45)",
+    padding: "12px",
+    marginTop: "10px",
+    borderRadius: "8px",
+  },
+  configItem: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "10px 0",
+  },
+  chatContainer: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#111827",
+  },
+  chatHeader: {
+    padding: "10px 16px",
+    borderBottom: "1px solid #374151",
+  },
+  modelText: {
+    color: "#fbbf24",
+  },
+  chatBody: {
+    flex: 1,
+    overflowY: "auto",
+    padding: "16px",
+    display: "flex",
+    flexDirection: "column",
+  },
+  message: {
+    padding: "8px",
+    borderRadius: "10px",
+    marginBottom: "10px",
+    maxWidth: "70%",
+    color: "white",
+  },
+  userMessage: {
+    alignSelf: "flex-end",
+    backgroundColor: "#78350f",
+  },
+  botMessage: {
+    alignSelf: "flex-start",
+    backgroundColor: "#374151",
+  },
+  timestamp: {
+    fontSize: "0.8rem",
+    marginTop: "4px",
+    color: "#9ca3af",
+    fontWeight: "bold",
+  },
+  questionBlock: {
+    marginTop: "20px",
+    width: "60%",
+  },
+  questionCard: {
+    backgroundColor: "#1f2937",
+    borderRadius: "8px",
+    padding: "20px",
+    color: "white",
+    border: "1px solid #374151",
+  },
+  questionText: {
+    fontSize: "1.1rem",
+    marginBottom: "10px",
+  },
+  optionButton: {
+    backgroundColor: "#374151",
+    color: "white",
+    fontWeight: "bold",
+    padding: "10px",
+    borderRadius: "5px",
+    border: "none",
+    marginBottom: "10px",
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    cursor: "pointer",
+  },
+  cardTime: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    fontSize: "0.8rem",
+    color: "#9ca3af",
+    marginTop: "10px",
+  },
+  bulletDot: {
+    width: "6px",
+    height: "6px",
+    borderRadius: "50%",
+    backgroundColor: "#fbbf24",
+    marginRight: "6px",
+  },
+  chatFooter: {
+    padding: "10px 16px",
+    borderTop: "1px solid #374151",
+    display: "flex",
+    alignItems: "center",
+  },
+  input: {
+    flex: 1,
+    padding: "10px",
+    borderRadius: "6px",
+    border: "none",
+    marginRight: "10px",
+  },
+  sendButton: {
+    padding: "10px 16px",
+    backgroundColor: "#fbbf24",
+    borderRadius: "6px",
+    border: "none",
+    fontWeight: "bold",
+    cursor: "pointer",
+  },
+};
+
+export default App;
