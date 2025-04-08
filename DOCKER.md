@@ -265,34 +265,46 @@ services:
   frontend:
     image: react-app
     ports:
-      - "3000:3000"
+      - 3000:3000
 
   backend:
     image: node-app
     ports:
-      - "5000:5000"    
+      - 5000:5000   
     depends_on:
       - mongo
 
   mongo:
     image: mongo
     ports:
-      - "27017:27017"
+      - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: qwerty
+  
+  mongo-express:
+    image:mongo-express
+     ports:
+       -8081:8081
+     environment:
+       MONGO_INITDB_ROOT_USERNAME: admin
+       MONGO_INITDB_ROOT_PASSWORD: qwerty
 
 ```
 
 Note: ("5000:5000" = host_port:container_port ) ->this is called  port binding or  port mapping
 ->Tumhare system pe agar koi localhost:5000 pe request karega, to wo Docker container ke andar wale port 5000 pe chala jayega.
 
-
-docker-compose up: sabhi containers start karega.
-docker-compose down: sabhi containers stop karega.
-docker-compose build: images ko build karega agar needed ho.
+Note:- .ymal file me hum network create nhi karte hai ,because docker compose bydefault network create karta h and uss default network ke andar hi saare container ko run karega.
 
 
+
+
+docker-compose -f file_name.yaml up -d : sabhi containers start karega.
+docker-compose -f file_name.yaml down -d: sabhi containers stop karega.
+docker-compose -f file_name.yaml  build -d: images ko build karega agar needed ho.
+
+Note:agar terminal se .yaml file run karna hai to ,mujhe terminal se uss directory pe jana padega jaha pe .yaml wala file hai.
 
 
 
