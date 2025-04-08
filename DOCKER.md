@@ -282,6 +282,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: qwerty
 
+```
 
 Note: ("5000:5000" = host_port:container_port ) ->this is called  port binding or  port mapping
 ->Tumhare system pe agar koi localhost:5000 pe request karega, to wo Docker container ke andar wale port 5000 pe chala jayega.
