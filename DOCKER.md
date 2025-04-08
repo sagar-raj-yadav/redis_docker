@@ -259,6 +259,7 @@ To normally aapko teen alag Docker commands chalani padengi, lekin Docker Compos
 ---
 
 ## Example `docker-compose.yml` File:
+```yaml
 version: "3.8"
 services:
   frontend:
