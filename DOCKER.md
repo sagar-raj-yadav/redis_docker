@@ -309,7 +309,28 @@ Note:- .ymal file me hum network create nhi karte hai ,because docker compose by
 > 📌 **Note:** Agar terminal se `.yaml` file run karni hai, to mujhe terminal me uss directory me jana padega jaha `.yaml` file maujood hai.
 
 
+### Dockerizing our App
+``` jahe mere paas koi bhi application ho like nodejs,react,.NET innko hum docker images me convert kar sakte h.
 
+
+myApp->docker image->container
+converting my application to docker container is called dockerizing our app.
+
+--iss docker container ko hum ab apne team members ke sath share kar sakte h.
+--yaa to iss docker container hum directly deploy bhi kar sakte h.
+
+
+--dockerizing karne ke liye ek special file ka use karte h ,which is called docker_file.
+--docker_file ke andar saare instructions hote hai ki kiss tarah se docker image and docker container build hona chahiye.
+
+--Important instructions of docker file
+i.FROM: base_image -> wo dependency jiske upar tumhara application run hoga.like node.js and react.js ke liye node hona chahiye
+
+ii.WORKDIR:
+iii.COPY:host ka saara code and data ko image me copy karne ke liye
+iv.RUN: koi bhi dependecy run karne ke liye (like npm install) (we have multiple run commands)
+v.CMD: jab  docker image se pura container setup ho gya to,uske baad wo kon sa ek command hai jisko run karne pe mera application run hoga.
+->we have only one CMD command.
 
 
 
