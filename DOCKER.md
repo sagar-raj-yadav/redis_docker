@@ -300,9 +300,9 @@ Note:- .ymal file me hum network create nhi karte hai ,because docker compose by
 
 
 
--- docker-compose -f file_name.yaml up -d : sabhi containers start karega.
--- docker-compose -f file_name.yaml down -d: sabhi containers stop karega.
--- docker-compose -f file_name.yaml  build -d: images ko build karega agar needed ho.
+-docker-compose -f file_name.yaml up -d : sabhi containers start karega.
+-docker-compose -f file_name.yaml down -d: sabhi containers stop karega.
+-docker-compose -f file_name.yaml  build -d: images ko build karega agar needed ho.
 
 --- Note:agar terminal se .yaml file run karna hai to ,mujhe terminal se uss directory pe jana padega jaha pe .yaml wala file hai.
 
