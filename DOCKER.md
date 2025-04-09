@@ -323,15 +323,51 @@ converting my application to docker container is called dockerizing our app.
 --dockerizing karne ke liye ek special file ka use karte h ,which is called docker_file.
 --docker_file ke andar saare instructions hote hai ki kiss tarah se docker image and docker container build hona chahiye.
 
+Note:Docker file name must be "Dockerfile".
+
+
 --Important instructions of docker file
 i.FROM: base_image -> wo dependency jiske upar tumhara application run hoga.like node.js and react.js ke liye node hona chahiye
 
 ii.WORKDIR:
 iii.COPY:host ka saara code and data ko image me copy karne ke liye
-iv.RUN: koi bhi dependecy run karne ke liye (like npm install) (we have multiple run commands)
-v.CMD: jab  docker image se pura container setup ho gya to,uske baad wo kon sa ek command hai jisko run karne pe mera application run hoga.
+iv.RUN: koi bhi dependecy run karne ke liye (like npm install)
+(we have multiple run commands)
+v.CMD: jab  docker image se pura container setup ho gya to,uske baad wo kon sa ek command hai jisko run karne pe mera application run hoga. (like node server.js)
 ->we have only one CMD command.
 
+vi.ENV: we can define our environment variable
+
+# How different layers build on one another?
+myapp hai usko run karne  ke liye mujhe node chahiye and node ko run karne ke liye debion chahiye.
+
+myapp    --top layer
+  |
+  |
+node
+  |
+  |
+debion    --bottom layer
+->these are different layers of images
+->myapp ,node,debion all are images and all these images will be inside one container.
+
+
+## Create Dockerfile
+FROM node
+ENV MONGO_DB_USERNAME=admin MONGO_DB_PWD=querty
+RUN mkdir -p myapp
+COPY ./myapp
+CMD ["node", "/myapp/server.js"]
+
+
+# build docker image
+docker build -t myapp:1.0 .
+
+->verify that docker images will be build or not->
+docker images -> list of images show hoga usme myapp bhi show hoga
+
+#running container of my image
+docker run myapp:1.0
 
 
 
