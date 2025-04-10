@@ -369,5 +369,17 @@ docker images -> list of images show hoga usme myapp bhi show hoga
 #running container of my image
 docker run myapp:1.0
 
+### Tum apne project ka docker image  kaise build karoge?
+i.signup in Docker Hub
+ii.create new repository(like myapp) ,then your repository name become sagarrajyadav/myapp
+iii. docker build -t sagarrajyadav/myapp .  ->run this in terminal
+iv.Now,Tum apne image ko docker desktop pe dekh sakte ho
+v.Ab local system (i.e, docker desktop ) se iss image ko push karna chahte hai ,Docker Hub pe.
+vi.jiss account se docker hub pe signup kiye h,ussi account se terminal pe login karna padega.
+->docker login or docker login -u <username>
+vii.docker push sagarrajyadav/myapp  (docker push image_name)
+viii.Ab jaise hum dusro ki docker images ko pull kar rhe the, ab mera docker image koi pull kar sakta h.
 
 
+
+### DOCKER Volumes
