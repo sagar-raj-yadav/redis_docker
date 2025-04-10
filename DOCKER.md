@@ -383,3 +383,6 @@ viii.Ab jaise hum dusro ki docker images ko pull kar rhe the, ab mera docker ima
 
 
 ### DOCKER Volumes
+suppose maine mongodb ka container banaya and usme data add kiya to wo data sirf ussi container me rahega and jab container delete kar denge to saara data bhi delete ho jayega ..permanent store nhi rahta.
+
+->Docker volume ka use karke hum container wala data ko Host machine par save karwa sakte h.
