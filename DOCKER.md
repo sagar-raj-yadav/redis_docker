@@ -239,7 +239,7 @@ Note:- for all other database we can use their GUI .
 like  MySQL	-> phpMyAdmin	 and PostgreSQL ->	pgAdmin	
 
 
-# Docker compose
+### Docker compose
 `.yaml` → **Yet Another Markup Language** 
 
 → Multiple Docker containers ko ek saath manage karne ke liye use hota hai. 
@@ -383,6 +383,43 @@ viii.Ab jaise hum dusro ki docker images ko pull kar rhe the, ab mera docker ima
 
 
 ### DOCKER Volumes
-suppose maine mongodb ka container banaya and usme data add kiya to wo data sirf ussi container me rahega and jab container delete kar denge to saara data bhi delete ho jayega ..permanent store nhi rahta.
+⚠️ Problem without Volume:
+Jab aap MongoDB Docker container run karte ho bina volume ke, tab:
+MongoDB ka data sirf container ke andar store hota hai.
+Agar aap container ko stop karte ho, to data delete nahi hota.
 
-->Docker volume ka use karke hum container wala data ko Host machine par save karwa sakte h.
+Lekin agar aap container ko delete/remove kar dete ho , tab uske andar ka pura data bhi delete ho jata hai ❌
+
+✅ Solution with Docker Volume:
+Jab aap volume ka use karte ho, tab:
+Ek separate storage space create hota hai host machine par.
+container ko uss space se map kar denge.
+
+Ab agar container delete bhi ho jaye, to volume pe stored data safe rahta hai.
+
+Learn more abour docker volume??
+
+
+### Docker Network
+->Docker by default har container ko bridge network se connect karta hai .
+->Bridge Betwork ke  through containers ek dusre se directly communicate kar sakte hain.
+
+                          [ INTERNET ]
+                               |
+                          [ HOST OS ]
+                               |
+                          [ Docker Engine ]
+                               |
+                        +------------------+
+                        |  BRIDGE NETWORK  |
+                        +------------------+
+                         |              |
+                 +---------------+  +---------------+
+                 |  Container A  |  |  Container B  |
+                 |   (IP: .2)    |  |   (IP: .3)    |
+                 +---------------+  +---------------+
+
+- A ↔ B (Direct Communication)
+- A/B ↔ Internet (via host)
+
+
